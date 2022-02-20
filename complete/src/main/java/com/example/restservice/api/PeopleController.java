@@ -9,14 +9,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 public class PeopleController {
     PeopleService peopleService = new PeopleService();
 
     @GetMapping("/people/{id}")
-    public ResponseEntity getPeopleById(@PathVariable int id) {
-        return peopleService.getPeople(id);
+    public ResponseEntity<People> getPeopleById(@PathVariable("id") int id) {
+
+        try{
+            return new ResponseEntity<>(peopleService.getPeople(id),HttpStatus.OK);
+        }
+        catch (PeopleNotFoundException peopleNotFoundException){
+            return new ResponseEntity(peopleNotFoundException.getMessage(),HttpStatus.NOT_FOUND);
+        }
+        //return new ResponseEntity<>(peopleService.getPeople(id),HttpStatus.OK);
     }
 }

@@ -10,8 +10,11 @@ import java.util.List;
 
 
 public class PeopleService{
-    PeopleAdapter peopleAdapter = new PeopleAdapter();
-    public ResponseEntity getPeople(int id) {
+    public People getPeople(int id) {
+        PeopleAdapter peopleAdapter = new PeopleAdapter();
+        if(id < 0){
+            throw new PeopleNotFoundException("Invalid id");
+        }
         return peopleAdapter.callPeopleApi(id);
     }
 }
