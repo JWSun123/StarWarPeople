@@ -2,8 +2,6 @@ package com.example.restservice.adapter;
 
 import com.example.restservice.exception.PeopleNotFoundException;
 import com.example.restservice.model.People;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
