@@ -42,7 +42,7 @@ public class PeopleController {
     public ResponseEntity<People> updatePerson(@PathVariable String name, @RequestBody People people){
         People updated = peopleService.updatePerson(name, people);
         if (updated != null){
-            return new ResponseEntity<People>(updated, HttpStatus.OK);
+            return new ResponseEntity<>(updated, HttpStatus.OK);
         }
         return new ResponseEntity("Could not find person", HttpStatus.BAD_REQUEST);
     }
